@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Profile Viewer</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Profile Viewer</h1>
+    <p>Search for someone by typing their corresponding name</p>
+	<form action="/find" method="get" name="search" id="search">
+
+		<input id="user_name" type="text" name="user_name" placeholder="name"><br>
+
+		<button type="submit" name="submit" class="button btn-light-blue">Search</button>
+
+	</form>
+    <% if(found == 2){ %>
+	    <p>Name not found</p>
+    <% } else if(found == 1){ %>
+    	<img src=<%= data.image %> >
+	    <p>Name: <%= data.name %></p>
+	    <p>work experience: <%= data.experience %></p>
+	    <h2>Timeline</h2>
+	    <% if(data.tweets){ %>
+		    <% for(let i = 0; i < data.tweets.length; i++){ %>
+		    	<div>
+		    		<h3><%= data.tweets[i].user %></h3>
+		    		<p><%= data.tweets[i].message %></p>
+		    	</div>
+		    <% } %>
+	    <% } %>
+    <% } %>
+  </body>
+</html>
