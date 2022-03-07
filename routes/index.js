@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('../utils/mysql');
 const twitter = require('../utils/twitter');
+const config = require('../config/config');
 
 router.get('/', (req, res, next) => {
 	res.render('index', { found: 0 });
 });
 
 router.get('/find', (req, res, next) => {
-	mysql.query(`SELECT * FROM ${process.env.MYSQL_TABLE} WHERE name LIKE '%${req.query.user_name}%' LIMIT 1;`, (err, resp) => {
+	mysql.query(`SELECT * FROM ${config.table} WHERE name LIKE '%${req.query.user_name}%' LIMIT 1;`, (err, resp) => {
 		if (err) {
 			console.log(err);
 		}
@@ -40,7 +41,7 @@ router.put('/update', (req, res, next) => {
 		conditions.push(`${req.body.conditions[i]}`)
 	}
 	conditions.join(',');
-	mysql.query(`UPDATE ${process.env.MYSQL_TABLE} SET ${conditions} WHERE ${filter}`, (err, resp) => {
+	mysql.query(`UPDATE ${config.table} SET ${conditions} WHERE ${filter}`, (err, resp) => {
 		if (err) {
 			console.log(err);
 		}
