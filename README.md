@@ -4,6 +4,20 @@
 
 * [Node.js](https://nodejs.org/)
 * [Express.js](http://expressjs.com)
+* A `.env` file must be created in the root of this project with the following keys and their corresponding values in order to make it work:
+
+```sh
+MYSQL_TABLE
+MYSQL_HOST
+MYSQL_PORT
+MYSQL_DATABASE
+MYSQL_USER
+MYSQL_PASS
+TWITTER_KEY
+TWITTER_SECRET
+TWITTER_ACCESS_TOKEN
+TWITTER_ACCESS_TOKEN_SECRET
+```
 
 ## Executtion
 
